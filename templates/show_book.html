@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} <center> Book list </center> {% endblock %}</h1>
+    {% for book in books %}
+        <a href="#">
+            <h2>{{ book['title'] }}</h2>
+        </a>
+        <span class="badge badge-primary">{{ book['created'] }}</span>
+        <hr>
+    {% endfor %}
+{% endblock %}
