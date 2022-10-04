@@ -4,13 +4,14 @@
     <h1>{% block title %} <center> Author list </center> {% endblock %}</h1>
     {% for author in authors %}
             <h1><li>Author name : {{ author.name }}</li></h1>
-            <a href="{{ url_for('editauthor',id= author.authorid) }}">Edit Author</a>
             {% for book in books %}
                 {% if book.authorid == author.authorid %}
                     <li>Author book : {{ book.title }}</li>
                 {% endif%}
             {% endfor %}
             <li>Author priority : {{ author.priority }}</li>
+            <br>
+            <a href="{{ url_for('editauthor',id= author.authorid) }}">Edit Author</a>
         <span class="badge badge-primary">{{ author['created'] }}</span>
         <hr>
     {% endfor %}

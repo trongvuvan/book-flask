@@ -113,6 +113,26 @@ def editauthor(id):
 
     return render_template('editauthor.html', query=query,books=books,authors=authors,id=id)
 
+@app.route('/<int:id>/deletebook', methods=('POST',))
+def deletebook(id):
+    query = request.form.get("id")
+    conn = get_db_connection()
+    conn.execute('DELETE FROM book WHERE bookid = ?', (id,))
+    conn.commit()
+    conn.close()
+    flash('"{}" was successfully deleted!')
+    return redirect(url_for('showbook'))
+
+@app.route('/<int:id>/deleteauthor', methods=('POST',))
+def deleteauthor(id):
+    query = request.form.get("id")
+    conn = get_db_connection()
+    conn.execute('DELETE FROM author WHERE authorid = ?', (id,))
+    conn.commit()
+    conn.close()
+    flash('"{}" was successfully deleted!')
+    return redirect(url_for('showauthor'))
+
 @app.route('/')
 def index():
     return render_template('index.html')
