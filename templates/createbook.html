@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Create a New Book {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="id">BookID</label>
+        <input type="text" name="id"
+               placeholder="Book id" class="form-control"
+               value="{{ request.form['id'] }}"></input>
+    </div>
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title"
+               placeholder="Post title" class="form-control"
+               value="{{ request.form['title'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{% endblock %}

@@ -4,9 +4,15 @@
     <h1>{% block title %} <center> Book list </center> {% endblock %}</h1>
     {% for book in books %}
         <a href="#">
-            <h2>{{ book['title'] }}</h2>
+            <h2>{{ book.title }}</h2>
+            {% for author in authors %}
+                {% if book.bookid == author.bookid%}
+                    {{ author.name }}
+                {% endif %}
+            {% endfor %}
         </a>
         <span class="badge badge-primary">{{ book['created'] }}</span>
         <hr>
     {% endfor %}
+    <a href="{{ url_for('createbook')}}">Create book</a>
 {% endblock %}
