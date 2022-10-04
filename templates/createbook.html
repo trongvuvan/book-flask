@@ -10,6 +10,19 @@
                placeholder="Book id" class="form-control"
                value="{{ request.form['id'] }}"></input>
     </div>
+
+    <div>
+    <label for="authorid">Author name</label>
+    <select name="authorid" class="form-group">
+        {% for author in authors %}
+        <option value = "{{ author.authorid }}" </option>
+            <a href="#">
+                <h2>{{ author.name }}</h2>
+            </a>
+        {% endfor %}
+    </select>
+    </div>
+
     <div class="form-group">
         <label for="title">Title</label>
         <input type="text" name="title"

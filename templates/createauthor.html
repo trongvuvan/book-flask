@@ -11,12 +11,6 @@
                value="{{ request.form['authorid'] }}"></input>
     </div>
     <div class="form-group">
-        <label for="bookid">Author BookID</label>
-        <input type="text" name="bookid"
-               placeholder="Author bookid" class="form-control"
-               value="{{ request.form['title'] }}"></input>
-    </div>
-    <div class="form-group">
         <label for="name">Author Name</label>
         <input type="text" name="name"
                placeholder="Author name" class="form-control"
@@ -26,7 +20,7 @@
         <label for="priority">Priority</label>
         <input type="text" name="priority"
                placeholder="Author priority" class="form-control"
-               value="{{ request.form['title'] }}"></input>
+               value="{{ request.form['priority'] }}"></input>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
