@@ -1,16 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{% block title %} Edit "{{ post['title'] }}" {% endblock %}</h1>
-
+{% for book in books %}
+                {% if book.bookid == id%}
+                <h1> edit : {{ book.title }}</h1>
+                {% endif %}
+{% endfor %}
 <form method="post">
-    <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" name="title" placeholder="Post title"
-               class="form-control"
-               value="{{ request.form['title'] or post['title'] }}">
-        </input>
-    </div>
+    <div>
+        <label for="authorid">New author name</label>
+        <select name="authorid" class="form-group">
+            {% for author in authors %}
+            <option value = "{{ author.authorid }}" </option>
+                <a href="#">
+                    <h2>{{ author.name }}</h2>
+                </a>
+            {% endfor %}
+        </select>
+        </div>
+        <div class="form-group">
+            <label for="title">New Title</label>
+            <input type="text" name="title"
+                   placeholder="Post title" class="form-control"
+                   value="{{ request.form['title'] }}"></input>
+        </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>

@@ -64,26 +64,54 @@ def createauthor():
 
     return render_template('createauthor.html')
 
-@app.route('/<int:id>/editbook', methods=('GET', 'POST'))
-def edit(bookid):
-    post = get_post(bookid)
 
+@app.route('/<int:id>/editbook', methods=('GET', 'POST'))
+def editbook(id):
+    query = request.form.get("id")
+    conn = get_db_connection()
+    authors = conn.execute('SELECT * FROM author').fetchall()
+    books = conn.execute('SELECT * FROM book').fetchall()
+    conn.close()
     if request.method == 'POST':
         title = request.form['title']
-        content = request.form['content']
+        authorid = request.form['authorid']
 
         if not title:
-            flash('Title is required!')
+            flash('Somethings is missing!')
         else:
             conn = get_db_connection()
-            conn.execute('UPDATE book SET title = ?'
+            conn.execute('UPDATE book SET title = ?,authorid = ?'
                          ' WHERE bookid = ?',
-                         (title,bookid))
+                         (title,authorid,id))
             conn.commit()
             conn.close()
-            return redirect(url_for('index'))
+            return redirect(url_for('showbook'))
 
-    return render_template('editbook.html', post=post)
+    return render_template('editbook.html', query=query,books=books,authors=authors,id=id)
+
+@app.route('/<int:id>/editauthor', methods=('GET', 'POST'))
+def editauthor(id):
+    query = request.form.get("id")
+    conn = get_db_connection()
+    authors = conn.execute('SELECT * FROM author').fetchall()
+    books = conn.execute('SELECT * FROM book').fetchall()
+    conn.close()
+    if request.method == 'POST':
+        name = request.form['name']
+        priority = request.form['priority']
+
+        if not priority or not name:
+            flash('Somethings is missing!')
+        else:
+            conn = get_db_connection()
+            conn.execute('UPDATE author SET name = ?,priority = ?'
+                         ' WHERE authorid = ?',
+                         (name,priority,id))
+            conn.commit()
+            conn.close()
+            return redirect(url_for('showauthor'))
+
+    return render_template('editauthor.html', query=query,books=books,authors=authors,id=id)
 
 @app.route('/')
 def index():
