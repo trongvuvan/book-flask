@@ -113,7 +113,6 @@ termcolor==2.0.1
 toml==0.10.2
 tomli==2.0.1
 Twisted==18.9.0
-ubuntu-advantage-tools==27.6
 ufw==0.36
 unattended-upgrades==0.1
 urllib3==1.25.8
