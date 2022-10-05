@@ -20,7 +20,6 @@ cs50==9.2.2
 dbus-python==1.2.16
 distlib==0.3.6
 distro==1.4.0
-distro-info===0.23ubuntu1
 dj-database-url==1.0.0
 Django==4.1
 dnspython==2.2.1
