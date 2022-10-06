@@ -133,8 +133,24 @@ def deleteauthor(id):
     flash('"{}" was successfully deleted!')
     return redirect(url_for('showauthor'))
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
+    if request.method == "POST":
+        details = request.form
+        
+        #retriving details from the form
+        user = details['user'] 
+        password = details['pass']
+        
+        #creating a DB connection
+        cur = get_db_connection()
+        sql = "SELECT * FROM users WHERE user ='" + user + "' AND pass = '" + password + "'" #Exploitable query format
+        account = cur.execute(sql).fetchone() #executing the query
+        
+        if account is not None:
+            return 'Logged in successfully'
+        else:
+            return 'Log in failed, Wrong Credentials'
     return render_template('index.html')
 
 if __name__ == '__main__':

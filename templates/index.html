@@ -4,4 +4,13 @@
     <h1>{% block title %} <center> Welcome to My book Manager System </center> {% endblock %}</h1>
     <h1><a href="{{ url_for('showbook')}}">List book</a></h1>
     <h1><a href="{{ url_for('showauthor')}}">List Author</a></h1>
+    <div class="col-md-4 offset-md-4 form-div">
+        <form method="POST" action="">
+
+            <H1>Enter your details </H1> <br>
+            Username <input type="text" name="user" /> <br>
+            Password <input type="password" name="pass" /> <br>
+            <input type="submit" class="btn btn-primary btn-block btn-lg">
+        </form>
+    </div>
 {% endblock %}

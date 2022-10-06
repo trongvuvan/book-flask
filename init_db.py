@@ -20,6 +20,8 @@ cur.execute("INSERT INTO book (bookid, title,authorid) VALUES (?,?,?)",
 cur.execute("INSERT INTO book (bookid, title,authorid) VALUES (?,?,?)",
             ('2', 'Gay lord','2')
             )
-
+cur.execute("INSERT INTO users (user, pass) VALUES (?,?)",
+            ('trong','trong')
+            )
 connection.commit()
 connection.close()
