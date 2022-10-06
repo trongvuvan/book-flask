@@ -19,7 +19,6 @@ Jinja2==2.10
 requests==2.19.1
 six==1.11.0
 SQLAlchemy==1.2.9
-sqlite3==3.31.1
 sqlparse==0.2.4
 termcolor==1.1.0
 urllib3==1.23
