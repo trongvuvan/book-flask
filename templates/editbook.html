@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% autoescape false %}
 {% for book in books %}
                 {% if book.bookid == id%}
                 <h1> edit : {{ book.title }}</h1>
@@ -40,4 +41,5 @@
     </form>
     {% endif %}
 {% endfor %}
+{% endautoescape %}
 {% endblock %}
