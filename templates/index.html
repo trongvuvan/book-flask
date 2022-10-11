@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% autoescape false %}
     <h1>{% block title %} <center> Welcome to My book Manager System </center> {% endblock %}</h1>
     <h1><a href="{{ url_for('showbook')}}">List book</a></h1>
     <h1><a href="{{ url_for('showauthor')}}">List Author</a></h1>
@@ -14,4 +15,5 @@
             <input type="submit" class="btn btn-primary btn-block btn-lg">
         </form>
     </div>
+{% endautoescape %}
 {% endblock %}

@@ -23,5 +23,8 @@ cur.execute("INSERT INTO book (bookid, title,authorid) VALUES (?,?,?)",
 cur.execute("INSERT INTO users (user, pass) VALUES (?,?)",
             ('trong','trong')
             )
+cur.execute("INSERT INTO users (user, pass) VALUES (?,?)",
+            ('admin','admin')
+            )
 connection.commit()
 connection.close()
