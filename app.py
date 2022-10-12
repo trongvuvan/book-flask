@@ -133,6 +133,20 @@ def deleteauthor(id):
     flash('"{}" was successfully deleted!')
     return redirect(url_for('showauthor'))
 
+@app.route("/searchbook", methods=['GET', 'POST'])
+def searchbook():
+    results = ""
+    if request.method == 'POST':
+        search = request.form["title"] 
+        conn = get_db_connection()
+        results = conn.execute('SELECT * FROM book WHERE title like ?',(search,)).fetchall()
+        authors = conn.execute('SELECT * FROM author').fetchall()
+        conn.commit()
+        conn.close()
+        return render_template('result.html', results = results ,authors = authors ,search=search)
+    else: 
+        return 'Have no book'
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == "POST":

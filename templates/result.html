@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% autoescape false %}
+<center><h1> Search for : {{search}} </h1></center>
+{% if results %}
+<center><h1> Results </h1></center><br>
 {% for result in results %}
-    <h1> book title : {{result.title}} </h1>
+    <h2> book title : {{result.title}} </h2>
+    {% for author in authors %}
+            {% if result.authorid == author.authorid%}
+                <h2> Author : {{ author.name }} </h2>
+            {% endif %}
+    {% endfor %}
 {% endfor %}
+{% endif%}
+{% endautoescape %}
 {% endblock %}

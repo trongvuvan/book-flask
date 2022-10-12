@@ -3,6 +3,12 @@
 {% block content %}
 {% autoescape false %}
     <h1>{% block title %} <center> Book list </center> {% endblock %}</h1>
+    <center>
+    <form action="{{ url_for('searchbook') }}" method ="post">
+        <input name="title" type="id" placeholder="Search book" />
+        <button>Search</button>
+    </form>
+    </center>
     {% for book in books %}
             <h2>Book title : {{ book.title }}</h2>
             {% for author in authors %}
@@ -16,5 +22,5 @@
         <hr>
     {% endfor %}
     <a href="{{ url_for('createbook')}}">Create book</a>
-{% endautoescape %}
+    {% endautoescape %}
 {% endblock %}
