@@ -136,14 +136,14 @@ def deleteauthor(id):
 @app.route("/searchbook", methods=['GET', 'POST'])
 def searchbook():
     results = ""
-    if request.method == 'POST':
-        search = request.form["title"] 
+    if request.method == 'GET':
+        title = request.args.get('title')
         conn = get_db_connection()
-        results = conn.execute('SELECT * FROM book WHERE title like ?',(search,)).fetchall()
+        results = conn.execute('SELECT * FROM book WHERE title like ?',(title,)).fetchall()
         authors = conn.execute('SELECT * FROM author').fetchall()
         conn.commit()
         conn.close()
-        return render_template('result.html', results = results ,authors = authors ,search=search)
+        return render_template('result.html', results = results ,authors = authors ,title=title)
     else: 
         return 'Have no book'
 
