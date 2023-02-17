@@ -160,7 +160,7 @@ def index():
         cur = get_db_connection()
         sql = "SELECT * FROM users WHERE user ='" + user + "' AND pass = '" + password + "'" #Exploitable query format
         account = cur.execute(sql).fetchone() #executing the query
-        
+
         if account is not None:
             return 'Logged in successfully'
         else:
